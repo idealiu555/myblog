@@ -1,5 +1,5 @@
-Contact: https://github.com/mateogic
+Contact: https://github.com/idealiu
 Expires: 2026-12-31T23:59:59.000Z
-Encryption: https://github.com/mateogic.gpg
+Encryption: https://github.com/idealiu.gpg
 Preferred-Languages: zh, en
-Canonical: https://blog.mateogic.cn/.well-known/security.txt
+Canonical: https://blog.idealiu.cn/.well-known/security.txt

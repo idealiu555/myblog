@@ -20,4 +20,4 @@ Disallow: /cache/
 Crawl-delay: 1
 
 # 站点地图位置
-Sitemap: https://blog.mateogic.cn/sitemap.xml
+Sitemap: https://blog.idealiu.cn/sitemap.xml

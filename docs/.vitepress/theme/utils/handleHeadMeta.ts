@@ -5,7 +5,7 @@ export function handleHeadMeta(context: TransformContext) {
   const { description, title, relativePath, frontmatter } = context.pageData;
 
   const curDesc = description || context.description;
-  const cover = frontmatter.cover || 'https://oss.mateogic.cn/blog/1756397179300-headshot.jpeg'
+  const cover = frontmatter.cover || 'https://oss.idealiu.cn/blog/1756397179300-headshot.jpeg'
   const cardType = frontmatter.cover ? 'summary_large_image' : 'summary'
   // 增加 Twitter 卡片
   const ogUrl: HeadConfig = ["meta", { property: "og:url", content: addBase(relativePath) }]
@@ -28,7 +28,7 @@ export function handleHeadMeta(context: TransformContext) {
 }
 
 export function addBase(relativePath: string) {
-  const host = 'https://blog.mateogic.cn'
+  const host = 'https://blog.idealiu.cn'
   if (relativePath.startsWith('/')) {
     return host + relativePath
   } else {

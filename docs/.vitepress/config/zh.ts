@@ -3,7 +3,7 @@ import { type DefaultTheme, defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Mateogic",
+  title: "idealiu",
   description: "一名希望成为开发者的学生，喜欢健身、摄影等。",
   lang: "zh-Hans", //语言
 
@@ -15,7 +15,7 @@ export default defineConfig({
 			{ text: "关于", link: "/about", activeMatch: '/about' },
     ],
     footer: {
-      message: '© 2025-present. Powered by <a href="https://github.com/mateogic" target="_blank">Mateogic</a>. All rights reserved',
+      message: '© 2025-present. Powered by <a href="https://github.com/idealiu" target="_blank">idealiu</a>. All rights reserved',
       copyright: '京ICP备2024051722号'
     },
     docFooter: {
@@ -26,11 +26,11 @@ export default defineConfig({
     lastUpdatedText: "最近更新时间",
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/mateogic' },
+      { icon: 'github', link: 'https://github.com/idealiu' },
     ],
 
     editLink: {
-      pattern: "https://github.com/mateogic/myblog/edit/master/docs/:path",
+      pattern: "https://github.com/idealiu/myblog/edit/master/docs/:path",
       text: "在 GitHub 上编辑此页",
     },
     returnToTopLabel: "回到顶部",

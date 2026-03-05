@@ -31,7 +31,7 @@ export default {
 				const logoElement = document.querySelector('.VPNavBarTitle .title');
 				if (logoElement) {
 					logoElement.addEventListener('click', () => {
-						window.location.href = 'https://blog.mateogic.cn';
+						window.location.href = 'https://blog.idealiu.cn';
 					});
 				}
 			}, 1000);
@@ -50,7 +50,7 @@ export default {
 				if (logoElement && !logoElement.hasAttribute('data-logo-click')) {
 					logoElement.setAttribute('data-logo-click', 'true');
 					logoElement.addEventListener('click', () => {
-						window.location.href = 'https://blog.mateogic.cn';
+						window.location.href = 'https://blog.idealiu.cn';
 					});
 				}
 			}, 100);

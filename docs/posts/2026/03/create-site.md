@@ -1,6 +1,6 @@
 ---
 title: 本站诞生啦
-date: 2025-09-05
+date: 2026-03-05
 tags:
   - LightHouse测试报告
   - 部署配置
@@ -18,17 +18,17 @@ tags:
 
 <!-- DESC SEP -->
 
-之前折腾过一些博客和个人主页，但受限于种种因素(没有发现喜欢的主题、没有很多想写的内容)，总是草草作罢。希望这次可以多记录一些内容，可能包括但不限于技术文档、个人想法(~~正经人谁写日记啊~~)、项目展示、摄影~~作品~~。总之，本站是一个功能相对完整的静态博客，改造自[justin3go](https://justin3go.com/)。本站去除了笔记、赞助、其它语言等功能，更改了深色主题的配色，增加了我的[个人主页](https://mateogic.cn)，并根据[LightHouse插件](https://developer.chrome.com/docs/lighthouse?hl=zh-cn)测试报告尝试做了些许优化，现将测试报告及部署配置记录如下。
+之前折腾过一些博客和个人主页，但受限于种种因素(没有发现喜欢的主题、没有很多想写的内容)，总是草草作罢。希望这次可以多记录一些内容，可能包括但不限于技术文档、个人想法(~~正经人谁写日记啊~~)、项目展示、摄影~~作品~~。总之，本站是一个功能相对完整的静态博客，改造自[justin3go](https://justin3go.com/)。本站去除了笔记、赞助、其它语言等功能，更改了深色主题的配色，增加了我的[个人主页](https://idealiu.cn)，并根据[LightHouse插件](https://developer.chrome.com/docs/lighthouse?hl=zh-cn)测试报告尝试做了些许优化，现将测试报告及部署配置记录如下。
 
 ## LightHouse测试报告
 
 ### 博客首屏
 
-![博客首屏测试报告](https://oss.mateogic.cn/blog/1757078765548-blog.mateogic.cn.png)
+![博客首屏测试报告](https://oss.idealiu.cn/blog/1757078765548-blog.idealiu.cn.png)
 
 ### 个人主页
 
-![个人主页测试报告](https://oss.mateogic.cn/blog/1757078757251-mateogic.cn.png)
+![个人主页测试报告](https://oss.idealiu.cn/blog/1757078757251-idealiu.cn.png)
 
 ## 部署配置
 
@@ -154,8 +154,8 @@ services:
     image: nginx:1.19.4
     container_name: blog
     ports:
-      - "5174:80"  # 博客端口映射 (blog.mateogic.cn)
-      - "5175:81"  # 主页端口映射 (mateogic.cn)
+      - "5174:80"  # 博客端口映射 (blog.idealiu.cn)
+      - "5175:81"  # 主页端口映射 (idealiu.cn)
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
@@ -220,7 +220,7 @@ http {
 # 主域名 - 个人主页 (使用端口81)
 server {
     listen 81;
-    server_name mateogic.cn;
+    server_name idealiu.cn;
 
     root /usr/share/nginx/html/homepage;  # 指向homepage目录
     index index.html;
@@ -248,7 +248,7 @@ server {
 # 博客子域名 (保持端口80)
 server {
     listen 80;
-    server_name blog.mateogic.cn;
+    server_name blog.idealiu.cn;
 
     root /usr/share/nginx/html/blog;
     index index.html;
@@ -281,8 +281,8 @@ server {
 
 注意 `nginx/conf.d/default.conf` 中两个 server：
 
-1. `listen 81; server_name mateogic.cn; root /usr/share/nginx/html/homepage;`
-2. `listen 80; server_name blog.mateogic.cn; root /usr/share/nginx/html/blog;`
+1. `listen 81; server_name idealiu.cn; root /usr/share/nginx/html/homepage;`
+2. `listen 80; server_name blog.idealiu.cn; root /usr/share/nginx/html/blog;`
 
 共同特性：
 

@@ -1,7 +1,7 @@
 /* TEAM */
-Author: Mateogic
+Author: idealiu
 Location: Beijing/Tianjin, China
-Contact: blog.mateogic.cn
+Contact: blog.idealiu.cn
 
 /* SITE */
 Last update: 2025/09/05

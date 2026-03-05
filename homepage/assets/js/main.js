@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
     // 页面变为可见时的处理
-    document.title = 'Mateogic';
+    document.title = 'idealiu';
   } else {
     // 页面变为不可见时的处理
     document.title = '👋 Come back soon!';

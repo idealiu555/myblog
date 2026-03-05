@@ -20,14 +20,14 @@ export default defineConfig({
     prefetchLinks: false,
   },
   sitemap: {
-    hostname: 'https://blog.mateogic.cn'
+    hostname: 'https://blog.idealiu.cn'
   },
   head: [
     [
       "link",
       {
         rel: "icon",
-        href: "https://oss.mateogic.cn/blog/1756397179300-headshot.jpeg",
+        href: "https://oss.idealiu.cn/blog/1756397179300-headshot.jpeg",
       },
     ],
   ],
