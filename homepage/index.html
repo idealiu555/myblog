@@ -24,7 +24,17 @@
         <link rel="preconnect" href="https://oss.idealiu.cn" crossorigin>
         <link rel="dns-prefetch" href="//oss.idealiu.cn">
         <!-- 移除 Google Fonts 外链，改用系统字体栈，减少 2 个网络往返与字体阻塞 -->
-        <link rel="preload" as="image" href="https://oss.idealiu.cn/headshot.jpeg?x-oss-process=image/resize,w_120/format,webp/quality,q_82" fetchpriority="high">
+        <link
+            rel="preload"
+            as="image"
+            href="https://oss.idealiu.cn/headshot.jpeg?x-oss-process=image/resize,w_120/format,webp/quality,q_82"
+            imagesrcset="
+                https://oss.idealiu.cn/headshot.jpeg?x-oss-process=image/resize,w_120/format,webp/quality,q_82 1x,
+                https://oss.idealiu.cn/headshot.jpeg?x-oss-process=image/resize,w_240/format,webp/quality,q_85 2x
+            "
+            imagesizes="120px"
+            fetchpriority="high"
+        >
 
         <!-- 关键首屏内联（精简子集，仅基础布局/颜色/导航/hero）: <2KB gzip 目标 -->
         <style>
@@ -53,13 +63,14 @@
         </style>
 
         <!-- 延迟加载完整样式：preload + 媒体切换，避免阻塞渲染 -->
-        <link rel="preload" href="assets/css/style.css?v=643f9baf1e" as="style">
-        <link rel="stylesheet" href="assets/css/style.css?v=643f9baf1e" media="print" onload="this.media='all'">
-        <noscript><link rel="stylesheet" href="assets/css/style.css?v=643f9baf1e"></noscript>
+        <link rel="preload" href="assets/css/style.css?v=0dc20886bd" as="style">
+        <link rel="stylesheet" href="assets/css/style.css?v=0dc20886bd" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="assets/css/style.css?v=0dc20886bd"></noscript>
     
     <!-- Theme toggle script (inline to prevent flash) -->
     <script>
         (function() {
+            document.documentElement.classList.add('js');
             const theme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', theme);
         })();
@@ -237,7 +248,7 @@
     <footer class="footer" id="contact">
         <div class="footer-container">
             <p class="footer-text">
-                © 2025-present. Powered by 
+                © 2026-present. Powered by 
                 <a href="https://github.com/idealiu555" target="_blank" rel="noopener noreferrer">idealiu</a>
                 . All rights reserved
             </p>
@@ -246,6 +257,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/main.js?v=84b2c3d426" defer></script>
+    <script src="assets/js/main.js?v=90f8408f21" defer></script>
 </body>
 </html>

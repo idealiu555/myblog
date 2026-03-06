@@ -21,13 +21,7 @@ isNoBackBtn: true
     >
     <div class="post-date hollow-text source-han-serif">{{ post.date.string }}</div>
   </h2>
-  <t-tag
-    v-for="tag in post.tags"
-    class="mr-2"
-    variant="outline"
-    shape="round"
-    >{{ tag }}</t-tag
-  >
+  <span v-for="tag in post.tags" class="post-tag mr-2">{{ tag }}</span>
   <div v-if="post.excerpt" v-html="post.excerpt"></div>
 </template>
 
@@ -122,6 +116,20 @@ const onCurrentChange: PaginationProps["onCurrentChange"] = (
 
 .mr-2 {
 	margin-right: 2px;
+}
+
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	height: 24px;
+	padding: 0 12px;
+	margin-bottom: 6px;
+	border-radius: 999px;
+	border: 1px solid var(--td-border-level-2-color);
+	color: var(--vp-c-text-2);
+	font-size: 0.75rem;
+	line-height: 1;
+	background: transparent;
 }
 
 .post-title {

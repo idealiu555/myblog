@@ -141,6 +141,12 @@ class Homepage {
    * 初始化动画效果
    */
   initAnimations() {
+    if (!('IntersectionObserver' in window)) {
+      return;
+    }
+
+    document.documentElement.classList.add('projects-animate');
+
     // 滚动时的项目卡片动画
     const observerOptions = {
       threshold: 0.1,
@@ -151,12 +157,8 @@ class Homepage {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          if (!reduceMotion) {
-            entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
-          } else {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'none';
-          }
+          if (!reduceMotion) entry.target.classList.add('is-visible');
+          else entry.target.classList.add('is-visible', 'reduced-motion');
           observer.unobserve(entry.target);
         }
       });
@@ -164,8 +166,6 @@ class Homepage {
 
     // 观察项目卡片
     document.querySelectorAll('.project-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
       observer.observe(card);
     });
   }

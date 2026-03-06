@@ -1,23 +1,25 @@
 <template>
 	<div class="comments" v-if="!frontmatter.isNoComment">
-		<!-- params generate in https://giscus.app/zh-CN -->
-		<Giscus
-			v-if="showComment"
-			repo="idealiu555/myblog"
-			repo-id="R_kgDOPqdIlA"
-			category="Announcements"
-			category-id="DIC_kwDOPqdIlM4CvAgM"
-			mapping="specific"
-			:term="term"
-			strict="1"
-			reactions-enabled="1"
-			emit-metadata="0"
-			input-position="top"
-			:theme="theme"
-			:lang="lang"
-			loading="lazy"
-			crossorigin="anonymous"
-		/>
+		<ClientOnly>
+			<!-- params generate in https://giscus.app/zh-CN -->
+			<Giscus
+				v-if="showComment"
+				repo="idealiu555/myblog"
+				repo-id="R_kgDOPqdIlA"
+				category="Announcements"
+				category-id="DIC_kwDOPqdIlM4CvAgM"
+				mapping="specific"
+				:term="term"
+				strict="1"
+				reactions-enabled="1"
+				emit-metadata="0"
+				input-position="top"
+				:theme="theme"
+				:lang="lang"
+				loading="lazy"
+				crossorigin="anonymous"
+			/>
+		</ClientOnly>
 	</div>
 </template>
 <script lang="ts" setup>

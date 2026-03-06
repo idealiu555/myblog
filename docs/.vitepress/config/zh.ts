@@ -15,7 +15,7 @@ export default defineConfig({
 			{ text: "关于", link: "/about", activeMatch: '/about' },
     ],
     footer: {
-      message: '© 2025-present. Powered by <a href="https://github.com/idealiu555" target="_blank">idealiu</a>. All rights reserved',
+      message: '© 2026-present. Powered by <a href="https://github.com/idealiu555" target="_blank">idealiu</a>. All rights reserved',
       copyright: '京ICP备2024051722号'
     },
     docFooter: {

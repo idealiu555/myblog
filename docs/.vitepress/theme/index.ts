@@ -1,26 +1,24 @@
 // https://vitepress.dev/guide/custom-theme
-import { h, defineAsyncComponent } from "vue";
+import { h } from "vue";
 import Theme from 'vitepress/theme' // https://vitepress.dev/zh/guide/extending-default-theme#using-different-fonts
 // 仅引入 TDesign 全局 token（--td-* 变量），避免组件样式变量缺失
 import 'tdesign-vue-next/es/style/index.css';
 // 按需引入使用到的组件样式
 import 'tdesign-vue-next/es/pagination/style/index.css';
-import 'tdesign-vue-next/es/tag/style/index.css';
 
 import "./style.css";
-
-const Comment = defineAsyncComponent(() => import("./components/Comment.vue"));
-const ImageViewer = defineAsyncComponent(() => import("./components/ImageViewer.vue"));
-const GoBack = defineAsyncComponent(() => import("./components/GoBack.vue"));
+import DocAfterEnhancer from "./components/DocAfterEnhancer.vue";
+import DocTopEnhancer from "./components/DocTopEnhancer.vue";
+import AsideTopEnhancer from "./components/AsideTopEnhancer.vue";
 
 export default {
 	...Theme,
 	Layout: () => {
 		return h(Theme.Layout, null, {
 			// https://vitepress.dev/guide/extending-default-theme#layout-slots
-			"doc-after": () => h(Comment),
-			"doc-top": () => h(ImageViewer),
-			"aside-top": () => h(GoBack),
+			"doc-after": () => h(DocAfterEnhancer),
+			"doc-top": () => h(DocTopEnhancer),
+			"aside-top": () => h(AsideTopEnhancer),
 		});
 	},
 

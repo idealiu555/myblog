@@ -364,6 +364,22 @@ a:hover {
   will-change: transform; /* 在 hover 前准备，避免 hover 触发 layout */
 }
 
+/* 仅在动画系统初始化完成后再隐藏初始态，避免降级环境内容不可见 */
+.projects-animate .project-card {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.projects-animate .project-card.is-visible {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.projects-animate .project-card.is-visible.reduced-motion {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
 .project-card::before {
   content: '';
   position: absolute;
