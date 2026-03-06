@@ -24,11 +24,11 @@ tags:
 
 ### 博客首屏
 
-![博客首屏测试报告](https://oss.idealiu.cn/blog/1757078765548-blog.idealiu.cn.png)
+![博客首屏测试报告](https://oss.idealiu.cn/lighthouse-blog.png)
 
 ### 个人主页
 
-![个人主页测试报告](https://oss.idealiu.cn/blog/1757078757251-idealiu.cn.png)
+![个人主页测试报告](https://oss.idealiu.cn/lighthouse-home.png)
 
 ## 部署配置
 
