@@ -25,93 +25,25 @@ isNoBackBtn: true
   <div v-if="post.excerpt" v-html="post.excerpt"></div>
 </template>
 
-<!-- <Pagination /> -->
-<div class="pagination-container">
-  <ClientOnly>
-    <t-pagination
-      v-model="current"
-      v-model:pageSize="pageSize"
-      :total="total"
-      size="small"
-      :showPageSize="false"
-      :showPageNumber="!mobile"
-      :showJumper="mobile"
-      @current-change="onCurrentChange"
-    />
-    <template #fallback>
-      <div class="pagination-fallback">共 {{ total }} 条数据</div>
-    </template>
-  </ClientOnly>
+<div class="pagination-container" v-if="posts.length > pageSize">
+  <a class="archive-link" href="/archive">查看全部 {{ posts.length }} 篇文章</a>
 </div>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from "vue";
-import { useRoute, useRouter } from "vitepress";
-import type { PaginationProps } from "tdesign-vue-next";
-
 import { data as posts } from "./.vitepress/theme/posts.data.mts";
-import { isMobile } from "./.vitepress/theme/utils/mobile.ts";
-
-const route = useRoute();
-
-const getPage = () => {
-  const search = route.query
-  const searchParams = new URLSearchParams(search);
-
-  return Number(searchParams.get("page") || "1");
-}
-
-// SSR 与客户端首帧保持一致，避免 hydration mismatch
-const current = ref(1)
-const pageSize = ref(10);
-const total = ref(posts.length);
-const mobile = ref(false);
-onMounted(() => {
-  current.value = getPage();
-  mobile.value = isMobile();
-});
-
-// 在首页有page参数时，从NAV跳转到当前页，清空了参数，但没有刷新页面内容的问题，需要手动更新current
-const router = useRouter();
-router.onAfterRouteChange = (to) => {
-  current.value = getPage();
-}
-
-const curPosts = computed(() => {
-	return posts.slice(
-		(current.value - 1) * pageSize.value,
-		current.value * pageSize.value
-	);
-});
-
-const onCurrentChange: PaginationProps["onCurrentChange"] = (
-	index,
-	pageInfo
-) => {
-	// MessagePlugin.success(`转到第${index}页`);
-
-	const url = new URL(window.location as any);
-	url.searchParams.set("page", index.toString());
-	window.history.replaceState({}, "", url);
-
-	window.scrollTo({
-		top: 0,
-	});
-};
+const pageSize = 10;
+const curPosts = posts.slice(0, pageSize);
 </script>
 <style lang="scss" scoped>
 /* 去掉.vp-doc li + li 的 margin-top */
 .pagination-container {
 	margin-top: 60px;
-
-	:deep(li) {
-		margin-top: 0px;
-	}
 }
 
-.pagination-fallback {
-	color: var(--vp-c-text-2);
-	font-size: 0.875rem;
+.archive-link {
+	color: var(--vp-c-brand-1);
+	font-size: 0.9rem;
+	text-decoration: underline;
 }
 
 .mr-2 {
