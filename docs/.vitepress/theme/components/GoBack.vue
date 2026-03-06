@@ -14,6 +14,7 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useRoute, useData } from "vitepress";
 import { RollbackIcon } from "tdesign-icons-vue-next";
+import "tdesign-vue-next/es/style/index.css";
 import "tdesign-vue-next/es/button/style/index.css";
 
 const route = useRoute();

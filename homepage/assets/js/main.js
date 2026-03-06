@@ -64,19 +64,13 @@ class Homepage {
   setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    // 保险：清除可能遗留的旧版本脚本写入的 inline 样式（用户缓存旧 JS 导致）
-    const navbar = document.querySelector('.nav');
-    if (navbar) {
-      navbar.style.backgroundColor = '';
-      navbar.style.backdropFilter = '';
-    }
-  // 主题切换后立即同步导航栏状态（避免滚动前的旧内联样式残留）
-  this.syncNavbarState();
+    // 主题切换后同步导航栏状态
+    this.syncNavbarState();
 
-    // 添加切换动画效果
-    document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
-    setTimeout(() => {
-      document.body.style.transition = '';
+    // 使用 class 触发过渡，避免频繁 inline style 写入
+    document.body.classList.add('theme-switching');
+    window.setTimeout(() => {
+      document.body.classList.remove('theme-switching');
     }, 300);
   }
 

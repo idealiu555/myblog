@@ -1,8 +1,6 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from "vue";
 import Theme from 'vitepress/theme' // https://vitepress.dev/zh/guide/extending-default-theme#using-different-fonts
-// 仅引入 TDesign 全局 token（--td-* 变量），避免组件样式变量缺失
-import 'tdesign-vue-next/es/style/index.css';
 
 import "./style.css";
 import DocAfterEnhancer from "./components/DocAfterEnhancer.vue";
@@ -21,16 +19,15 @@ export default {
 	},
 
 	enhanceApp({ router }: any) {
-		// 为logo添加点击跳转功能
+		// 为 logo 添加点击跳转功能：事件委托避免反复查询/重复绑定
 		if (typeof window !== 'undefined') {
-			setTimeout(() => {
-				const logoElement = document.querySelector('.VPNavBarTitle .title');
-				if (logoElement) {
-					logoElement.addEventListener('click', () => {
-						window.location.href = 'https://blog.idealiu.cn';
-					});
-				}
-			}, 1000);
+			document.addEventListener('click', (event) => {
+				const target = event.target as HTMLElement | null;
+				const logoLink = target?.closest('.VPNavBarTitle .title') as HTMLAnchorElement | null;
+				if (!logoLink) return;
+				event.preventDefault();
+				window.location.href = 'https://blog.idealiu.cn';
+			}, { passive: false });
 		}
 
 		router.onAfterRouteChanged = (to: string) => {
@@ -39,17 +36,6 @@ export default {
 				const newUrl = to.replace(encodeURI('/博客/'), '/posts/')
 				window.location.href = newUrl
 			}
-			
-			// 重新为logo添加点击事件（路由变化后需要重新绑定）
-			setTimeout(() => {
-				const logoElement = document.querySelector('.VPNavBarTitle .title');
-				if (logoElement && !logoElement.hasAttribute('data-logo-click')) {
-					logoElement.setAttribute('data-logo-click', 'true');
-					logoElement.addEventListener('click', () => {
-						window.location.href = 'https://blog.idealiu.cn';
-					});
-				}
-			}, 100);
 		}
 	},
 };
