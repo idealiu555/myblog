@@ -15,7 +15,7 @@ export default defineConfig({
 			{ text: "关于", link: "/about", activeMatch: '/about' },
     ],
     footer: {
-      message: '© 2025-present. Powered by <a href="https://github.com/idealiu" target="_blank">idealiu</a>. All rights reserved',
+      message: '© 2025-present. Powered by <a href="https://github.com/idealiu555" target="_blank">idealiu</a>. All rights reserved',
       copyright: '京ICP备2024051722号'
     },
     docFooter: {
@@ -26,11 +26,11 @@ export default defineConfig({
     lastUpdatedText: "最近更新时间",
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/idealiu' },
+      { icon: 'github', link: 'https://github.com/idealiu555' },
     ],
 
     editLink: {
-      pattern: "https://github.com/idealiu/myblog/edit/master/docs/:path",
+      pattern: "https://github.com/idealiu555/myblog/edit/master/docs/:path",
       text: "在 GitHub 上编辑此页",
     },
     returnToTopLabel: "回到顶部",

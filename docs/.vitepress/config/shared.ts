@@ -47,18 +47,6 @@ export default defineConfig({
         locales: { ...zhSearch }
       }
     },
-
-    // // algolia搜索，需要申请，如不需要，删除下面的配置，可使用本地搜索
-    // search: {
-    //   provider: 'algolia',
-    //   options: {
-    //     appId: 'I902L5MI8T',
-    //     apiKey: 'b68c4dcaf9015eeaccbed1bd06503ffc',
-    //     indexName: 'crawler',
-    //     locales: { ...zhSearch }
-    //   }
-    // },
-
     externalLinkIcon: true,
   },
 
@@ -69,7 +57,7 @@ export default defineConfig({
   vite: {
     server: { 
       host: '0.0.0.0',
-      port: 5173
+      port: 8080
     },
     plugins: [
       // ...

@@ -3,7 +3,7 @@
 		<!-- params generate in https://giscus.app/zh-CN -->
 		<Giscus
 			v-if="showComment"
-			repo="idealiu/myblog"
+			repo="idealiu555/myblog"
 			repo-id="R_kgDOPqdIlA"
 			category="Announcements"
 			category-id="DIC_kwDOPqdIlM4CvAgM"

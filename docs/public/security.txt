@@ -1,5 +1,5 @@
-Contact: https://github.com/idealiu
+Contact: https://github.com/idealiu555
 Expires: 2026-12-31T23:59:59.000Z
-Encryption: https://github.com/idealiu.gpg
+Encryption: https://github.com/idealiu555.gpg
 Preferred-Languages: zh, en
 Canonical: https://blog.idealiu.cn/.well-known/security.txt
