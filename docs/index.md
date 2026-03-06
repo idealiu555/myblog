@@ -39,14 +39,14 @@ isNoBackBtn: true
     :total="total"
     size="small"
     :showPageSize="false"
-    :showPageNumber="!isMobile()"
-    :showJumper="isMobile()"
+    :showPageNumber="!mobile"
+    :showJumper="mobile"
     @current-change="onCurrentChange"
   />
 </div>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useRoute, useRouter } from "vitepress";
 import type { PaginationProps } from "tdesign-vue-next";
 
@@ -65,6 +65,10 @@ const getPage = () => {
 const current = ref(getPage())
 const pageSize = ref(10);
 const total = ref(posts.length);
+const mobile = ref(false);
+onMounted(() => {
+  mobile.value = isMobile();
+});
 
 // 在首页有page参数时，从NAV跳转到当前页，清空了参数，但没有刷新页面内容的问题，需要手动更新current
 const router = useRouter();
