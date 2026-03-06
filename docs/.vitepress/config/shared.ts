@@ -8,6 +8,17 @@ import viteCompression from 'vite-plugin-compression';
 import { handleHeadMeta } from "../theme/utils/handleHeadMeta";
 import { search as zhSearch } from './zh'
 
+function escapeAttr(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\r/g, '&#13;')
+    .replace(/\n/g, '&#10;');
+}
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lastUpdated: true,
@@ -51,7 +62,25 @@ export default defineConfig({
   },
 
   markdown: {
-    math: true
+    math: true,
+    config(md) {
+      const originalInline = md.renderer.rules.math_inline;
+      const originalBlock = md.renderer.rules.math_block;
+
+      md.renderer.rules.math_inline = (...args) => {
+        const [tokens, idx] = args;
+        const tex = tokens[idx].content || '';
+        const rendered = originalInline ? originalInline(...args) : '';
+        return `<span class="vp-math-copy" data-tex="${escapeAttr(tex)}" data-display="0" title="双击复制 LaTeX">${rendered}</span>`;
+      };
+
+      md.renderer.rules.math_block = (...args) => {
+        const [tokens, idx] = args;
+        const tex = tokens[idx].content || '';
+        const rendered = originalBlock ? originalBlock(...args) : '';
+        return `<div class="vp-math-copy" data-tex="${escapeAttr(tex)}" data-display="1" title="双击复制 LaTeX">${rendered}</div>`;
+      };
+    }
   },
 
   vite: {

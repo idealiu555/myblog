@@ -183,6 +183,12 @@
 	cursor: zoom-in;
 }
 
+/* 公式支持双击复制 LaTeX */
+.vp-math-copy {
+	cursor: copy;
+	user-select: text;
+}
+
 /* jupyter 输出代码不换行显示 */
 main > div > div > pre > code {
 	white-space: normal;
