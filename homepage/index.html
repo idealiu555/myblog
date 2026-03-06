@@ -22,7 +22,9 @@
     
         <!-- Resource Hints & 自托管字体/资源预连接 -->
         <link rel="preconnect" href="https://oss.idealiu.cn" crossorigin>
+        <link rel="dns-prefetch" href="//oss.idealiu.cn">
         <!-- 移除 Google Fonts 外链，改用系统字体栈，减少 2 个网络往返与字体阻塞 -->
+        <link rel="preload" as="image" href="https://oss.idealiu.cn/headshot.jpeg" fetchpriority="high">
 
         <!-- 关键首屏内联（精简子集，仅基础布局/颜色/导航/hero）: <2KB gzip 目标 -->
         <style>
@@ -51,9 +53,9 @@
         </style>
 
         <!-- 延迟加载完整样式：preload + 媒体切换，避免阻塞渲染 -->
-        <link rel="preload" href="assets/css/style.css?v=1733967cb2" as="style" crossorigin>
-        <link rel="stylesheet" href="assets/css/style.css?v=1733967cb2" media="print" onload="this.media='all'">
-        <noscript><link rel="stylesheet" href="assets/css/style.css?v=1733967cb2"></noscript>
+        <link rel="preload" href="assets/css/style.css?v=643f9baf1e" as="style" crossorigin>
+        <link rel="stylesheet" href="assets/css/style.css?v=643f9baf1e" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="assets/css/style.css?v=643f9baf1e"></noscript>
     
     <!-- Theme toggle script (inline to prevent flash) -->
     <script>
@@ -226,6 +228,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/main.js?v=4b4c365aaa" defer></script>
+    <script src="assets/js/main.js?v=84b2c3d426" defer></script>
 </body>
 </html>

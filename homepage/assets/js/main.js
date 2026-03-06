@@ -14,7 +14,16 @@ class Homepage {
     this.initThemeToggle();
     this.initSmoothScroll();
     this.initNavbar();
-    this.initAnimations();
+    this.deferNonCriticalWork();
+  }
+
+  deferNonCriticalWork() {
+    const run = () => this.initAnimations();
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(run, { timeout: 1000 });
+      return;
+    }
+    window.setTimeout(run, 200);
   }
 
   /**

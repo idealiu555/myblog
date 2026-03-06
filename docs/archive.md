@@ -28,18 +28,9 @@ isNoBackBtn: true
 
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
-// 非 Vue 组件需要手动引入
-import {
-	MessagePlugin,
-	PaginationProps,
-	Pagination as TPagination,
-  Tag as TTag,
-} from "tdesign-vue-next";
-import { TimeIcon } from "tdesign-icons-vue-next";
+import { computed } from "vue";
 
 import { data as posts } from "./.vitepress/theme/posts.data.mts";
-import { isMobile } from "./.vitepress/theme/utils/mobile.ts";
 
 const postGroups = computed(() => {
   const groups = new Map<string, typeof posts>();

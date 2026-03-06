@@ -24,8 +24,8 @@ function fileHash(path) {
 
 // Targets we want to revise
 const assets = [
-  { rel: /<link[^>]+href="assets\/css\/style.css\?v=[^"]*"/i, path: resolve(root, 'assets/css/style.css'), tag: 'css' },
-  { rel: /<script[^>]+src="assets\/js\/main.js\?v=[^"]*"/i, path: resolve(root, 'assets/js/main.js'), tag: 'js' }
+  { path: resolve(root, 'assets/css/style.css'), ref: 'assets/css/style.css', tag: 'css' },
+  { path: resolve(root, 'assets/js/main.js'), ref: 'assets/js/main.js', tag: 'js' }
 ];
 
 let html = readFileSync(indexFile, 'utf8');
@@ -37,21 +37,20 @@ for (const a of assets) {
     continue;
   }
   const h = fileHash(a.path);
-  // Replace existing v query or append if missing
-  if (a.rel.test(html)) {
-    html = html.replace(a.rel, (m) => m.replace(/\?v=[^"]*/i, `?v=${h}`));
-  } else {
-    // attempt to find plain reference without version
-    const plainRegex = new RegExp(`(href|src)="assets\\/${a.tag === 'css' ? 'css/style.css' : 'js/main.js'}"`);
-    if (plainRegex.test(html)) {
-      html = html.replace(plainRegex, (m) => m.replace(/"$/, `?v=${h}"`));
-    } else {
-      console.warn(`[rev] Could not locate tag for ${a.tag} to update.`);
-      continue;
-    }
+  // Replace every matching reference (with or without ?v=)
+  const refRegex = new RegExp(`((?:href|src)="${a.ref})(?:\\?v=[^"]*)?"`, 'g');
+  let replacedCount = 0;
+  html = html.replace(refRegex, (_m, prefix) => {
+    replacedCount += 1;
+    return `${prefix}?v=${h}"`;
+  });
+
+  if (replacedCount === 0) {
+    console.warn(`[rev] Could not locate tag for ${a.tag} to update.`);
+    continue;
   }
   changed = true;
-  console.log(`[rev] Updated ${a.tag} version -> ${h}`);
+  console.log(`[rev] Updated ${a.tag} version -> ${h} (${replacedCount} refs)`);
 }
 
 if (changed) {

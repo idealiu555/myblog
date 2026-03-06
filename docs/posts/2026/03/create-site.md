@@ -168,7 +168,7 @@ services:
 
 ### Nginx 配置文件
 
-```conf
+```bash
 # nginx.conf
 user nginx;
 worker_processes auto;
@@ -215,7 +215,7 @@ http {
 }
 ```
 
-```conf
+```bash
 # default.conf
 # 主域名 - 个人主页 (使用端口81)
 server {

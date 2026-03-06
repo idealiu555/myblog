@@ -48,13 +48,7 @@ isNoBackBtn: true
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import { useRoute, useRouter } from "vitepress";
-// 非 Vue 组件需要手动引入
-import {
-	MessagePlugin,
-	PaginationProps,
-	Pagination as TPagination,
-  Tag as TTag,
-} from "tdesign-vue-next";
+import type { PaginationProps } from "tdesign-vue-next";
 
 import { data as posts } from "./.vitepress/theme/posts.data.mts";
 import { isMobile } from "./.vitepress/theme/utils/mobile.ts";

@@ -37,31 +37,9 @@ export function addBase(relativePath: string) {
 }
 
 export function handleFontsPreload({ assets }: TransformContext) {
-  const SourceHanSerifCN = assets.find(file => /SourceHanSerifCN-VF\.\w+\.otf/)
-  const FiraCode = assets.find(file => /FiraCode-VF\.\w+\.woff2/)
-  const Yellowtail = assets.find(file => /Yellowtail\.\w+\.ttf/)
+  const Yellowtail = assets.find((file) => /Yellowtail\.\w+\.ttf$/.test(file))
 
   return [
-    SourceHanSerifCN && [
-      'link',
-      {
-        rel: 'preload',
-        href: SourceHanSerifCN,
-        as: 'font',
-        type: 'font/otf',
-        crossorigin: ''
-      }
-    ],
-    FiraCode && [
-      'link',
-      {
-        rel: 'preload',
-        href: FiraCode,
-        as: 'font',
-        type: 'font/woff2',
-        crossorigin: ''
-      }
-    ],
     Yellowtail && [
       'link',
       {
