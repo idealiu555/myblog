@@ -151,7 +151,7 @@ version: '3.8'
 
 services:
   nginx:
-    image: nginx:1.19.4
+    image: nginx:latest
     container_name: blog
     ports:
       - "5174:80"  # 博客端口映射 (blog.idealiu.cn)
