@@ -27,7 +27,7 @@ export default defineConfig({
       "link",
       {
         rel: "icon",
-        href: "https://oss.idealiu.cn/blog/1756397179300-headshot.jpeg",
+        href: "https://oss.idealiu.cn/headshot.jpeg",
       },
     ],
   ],

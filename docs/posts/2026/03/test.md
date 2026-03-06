@@ -50,4 +50,4 @@ public static int add(int a, int b){
 
 ### 图片测试
 
-![图片](https://oss.idealiu.cn/blog/1757077842435-background.jpg)
+![图片](https://oss.idealiu.cn/background.jpg)
