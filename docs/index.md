@@ -33,16 +33,21 @@ isNoBackBtn: true
 
 <!-- <Pagination /> -->
 <div class="pagination-container">
-  <t-pagination
-    v-model="current"
-    v-model:pageSize="pageSize"
-    :total="total"
-    size="small"
-    :showPageSize="false"
-    :showPageNumber="!mobile"
-    :showJumper="mobile"
-    @current-change="onCurrentChange"
-  />
+  <ClientOnly>
+    <t-pagination
+      v-model="current"
+      v-model:pageSize="pageSize"
+      :total="total"
+      size="small"
+      :showPageSize="false"
+      :showPageNumber="!mobile"
+      :showJumper="mobile"
+      @current-change="onCurrentChange"
+    />
+    <template #fallback>
+      <div class="pagination-fallback">共 {{ total }} 条数据</div>
+    </template>
+  </ClientOnly>
 </div>
 
 <script lang="ts" setup>
@@ -62,11 +67,13 @@ const getPage = () => {
   return Number(searchParams.get("page") || "1");
 }
 
-const current = ref(getPage())
+// SSR 与客户端首帧保持一致，避免 hydration mismatch
+const current = ref(1)
 const pageSize = ref(10);
 const total = ref(posts.length);
 const mobile = ref(false);
 onMounted(() => {
+  current.value = getPage();
   mobile.value = isMobile();
 });
 
@@ -106,6 +113,11 @@ const onCurrentChange: PaginationProps["onCurrentChange"] = (
 	:deep(li) {
 		margin-top: 0px;
 	}
+}
+
+.pagination-fallback {
+	color: var(--vp-c-text-2);
+	font-size: 0.875rem;
 }
 
 .mr-2 {

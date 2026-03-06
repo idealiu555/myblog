@@ -24,7 +24,7 @@
         <link rel="preconnect" href="https://oss.idealiu.cn" crossorigin>
         <link rel="dns-prefetch" href="//oss.idealiu.cn">
         <!-- 移除 Google Fonts 外链，改用系统字体栈，减少 2 个网络往返与字体阻塞 -->
-        <link rel="preload" as="image" href="https://oss.idealiu.cn/headshot.jpeg" fetchpriority="high">
+        <link rel="preload" as="image" href="https://oss.idealiu.cn/headshot.jpeg?x-oss-process=image/resize,w_120/format,webp/quality,q_82" fetchpriority="high">
 
         <!-- 关键首屏内联（精简子集，仅基础布局/颜色/导航/hero）: <2KB gzip 目标 -->
         <style>
@@ -108,7 +108,25 @@
         <section class="hero" id="about">
             <div class="hero-container">
                 <div class="avatar-container">
-                    <img src="https://oss.idealiu.cn/headshot.jpeg" alt="idealiu Avatar" class="avatar" fetchpriority="high" width="120" height="120" decoding="async" loading="eager">
+                    <picture>
+                        <source
+                            type="image/webp"
+                            srcset="
+                                https://oss.idealiu.cn/headshot.jpeg?x-oss-process=image/resize,w_120/format,webp/quality,q_82 1x,
+                                https://oss.idealiu.cn/headshot.jpeg?x-oss-process=image/resize,w_240/format,webp/quality,q_85 2x
+                            "
+                        >
+                        <img
+                            src="https://oss.idealiu.cn/headshot.jpeg?x-oss-process=image/resize,w_240/quality,q_85"
+                            alt="idealiu Avatar"
+                            class="avatar"
+                            fetchpriority="high"
+                            width="120"
+                            height="120"
+                            decoding="async"
+                            loading="eager"
+                        >
+                    </picture>
                 </div>
                 <h1 class="hero-title">idealiu</h1>
                 <p class="hero-subtitle">开发 / 摄影 / 健身</p>

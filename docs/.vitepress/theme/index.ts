@@ -1,18 +1,17 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from "vue";
+import { h, defineAsyncComponent } from "vue";
 import Theme from 'vitepress/theme' // https://vitepress.dev/zh/guide/extending-default-theme#using-different-fonts
 // 仅引入 TDesign 全局 token（--td-* 变量），避免组件样式变量缺失
 import 'tdesign-vue-next/es/style/index.css';
 // 按需引入使用到的组件样式
-import 'tdesign-vue-next/es/button/style/index.css';
-import 'tdesign-vue-next/es/image-viewer/style/index.css';
 import 'tdesign-vue-next/es/pagination/style/index.css';
 import 'tdesign-vue-next/es/tag/style/index.css';
 
 import "./style.css";
-import Comment from "./components/Comment.vue";
-import ImageViewer from "./components/ImageViewer.vue"
-import GoBack from "./components/GoBack.vue";
+
+const Comment = defineAsyncComponent(() => import("./components/Comment.vue"));
+const ImageViewer = defineAsyncComponent(() => import("./components/ImageViewer.vue"));
+const GoBack = defineAsyncComponent(() => import("./components/GoBack.vue"));
 
 export default {
 	...Theme,
@@ -25,11 +24,7 @@ export default {
 		});
 	},
 
-	enhanceApp({ app, router }: any) {
-		app.component("Comment", Comment);
-		app.component("ImageViewer", ImageViewer);
-		app.component("GoBack", GoBack);
-
+	enhanceApp({ router }: any) {
 		// 为logo添加点击跳转功能
 		if (typeof window !== 'undefined') {
 			setTimeout(() => {

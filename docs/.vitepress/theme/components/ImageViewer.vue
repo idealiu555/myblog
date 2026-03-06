@@ -20,6 +20,7 @@ import { onMounted, onUnmounted, reactive, ref, watch } from "vue";
 import { useRoute } from "vitepress";
 import enConfig from "tdesign-vue-next/es/locale/en_US";
 import zhConfig from "tdesign-vue-next/es/locale/zh_CN";
+import "tdesign-vue-next/es/image-viewer/style/index.css";
 
 import TDesignDark from "./TDesignDark.vue";
 

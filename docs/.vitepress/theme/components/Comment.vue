@@ -21,9 +21,10 @@
 	</div>
 </template>
 <script lang="ts" setup>
-import { ref, watch, nextTick, computed } from "vue";
+import { ref, watch, nextTick, computed, defineAsyncComponent } from "vue";
 import { useData, useRoute } from "vitepress";
-import Giscus from "@giscus/vue";
+
+const Giscus = defineAsyncComponent(() => import("@giscus/vue"));
 
 const route = useRoute();
 const { isDark, frontmatter } = useData();
